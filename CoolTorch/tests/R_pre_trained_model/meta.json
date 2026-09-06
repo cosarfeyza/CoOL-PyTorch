@@ -1,0 +1,9 @@
+{
+  "n_hidden": 6,
+  "n_inputs": 10,
+  "has_confounder": false,
+  "feature_names": ["sex_0", "sex_1", "drug_a_0", "drug_a_1", "drug_b_0", "drug_b_1"],
+  "notes": "supp_model, lr = c(1e-4,1e-5,1e-6)",
+  "package": "CoOL",
+  "version": "1.1.2"
+}
