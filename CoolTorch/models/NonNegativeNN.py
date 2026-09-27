@@ -1,3 +1,4 @@
+# R equivalent: CoOL_1_initiate_neural_network (architecture + init; CoOL_functions.R)
 import math
 import torch
 from torch import nn
@@ -26,10 +27,9 @@ class NonNegativeNN(nn.Module):
         y = self.fc2(h)                   # (N,1)
         if self.use_c and c is not None:
             y = y + self.c2 * c.view(-1, 1)
-        return y
-    
-
-
+        # relu on the output too - matches CoOL_4_predict_risks in the R package
+        # and the trainer (cool_step_arma.cpp: rcpprelu(h*W2 + B2 + c*C2))
+        return F.relu(y)
     
 
     '''

@@ -1,8 +1,13 @@
+// Backend: C++ (Armadillo), compiled into the cool_ext_arma extension used by trainer.py.
+// R equivalent: the Rcpp routine cpp_train_network_relu, called from
+// CoOL_2_train_neural_network (CoOL_functions.R) — same algorithm, same non-negative
+// forward pass and weight-update rules, re-implemented against Armadillo/libtorch
+// instead of RcppArmadillo so it can be built as a PyTorch extension.
 #include <torch/extension.h>
 #include <armadillo>
 #include <tuple>
 #include <iostream>
-#include <cstring> 
+#include <cstring>
 
 // ----------------------------------------------------------
 // relu helpers (same as rcpprelu / rcpprelu_neg)

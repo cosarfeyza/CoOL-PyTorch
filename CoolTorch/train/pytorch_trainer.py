@@ -1,3 +1,10 @@
+# Backend: pure PyTorch (no R, no C++ extension needed). R equivalent: CoOL_2_train_neural_network
+# (CoOL_functions.R), but NOT a literal port — R/trainer.py update the model with
+# full-batch gradient steps via the compiled cpp_train_network_relu / cool_train_block;
+# this file reimplements training from scratch as manual mini-batch SGD (hand-written
+# gradients, no autograd, so the non-negativity/sign clamps on W1/B1/B2 can be applied
+# directly). Same loss and same constraints, different optimisation algorithm — use
+# this when the C++ extension isn't built, not as a numerically identical substitute.
 import math
 from typing import List
 import torch

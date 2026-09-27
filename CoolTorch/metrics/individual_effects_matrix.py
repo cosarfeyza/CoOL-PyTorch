@@ -1,3 +1,7 @@
+# Backend: pure PyTorch (no R). R equivalent: CoOL_6_individual_effects_matrix (CoOL_functions.R)
+# For each individual, predicts the risk they would have had if only one exposure
+# at a time had been set to its observed value (all others held at zero), giving
+# one column of "what this exposure alone would predict" per exposure.
 import numpy as np
 import pandas as pd
 import torch

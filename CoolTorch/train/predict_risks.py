@@ -1,3 +1,8 @@
+# Backend: pure PyTorch (no R). R equivalent: CoOL_4_predict_risks (CoOL_functions.R)
+# Runs the forward pass by hand from raw weight/bias tensors (or a dict of them)
+# rather than a live model object, so predictions can be reproduced from saved
+# parameters alone (e.g. weights loaded from R). ReLU on both the hidden layer and
+# the output, matching the non-negative network's forward pass.
 import torch
 import torch.nn.functional as F
 

@@ -1,3 +1,7 @@
+# Backend: pure Python/matplotlib (no R). R equivalent: CoOL_9_visualised_mean_risk_contributions_legend (CoOL_functions.R)
+# Draws just the colour bar for visualised_mean_risk_contributions.py's heatmap,
+# with its axis labelled in real risk-contribution units (0 to max(results)) so
+# the heatmap's colours can be read as actual values.
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap

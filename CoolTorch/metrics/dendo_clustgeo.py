@@ -1,3 +1,8 @@
+# Backend: R via subprocess (calls Rscript on utils/CoOL_dendrogram_runner.r, which
+# runs ClustGeo). R equivalent: CoOL_6_dendrogram (CoOL_functions.R)
+# The R bridge shared by sub_groups_clustgeo.py and number_of_sub_groups_clustgeo.py:
+# writes the risk contributions to CSV, shells out to R for the ClustGeo clustering
+# and dendrogram PNG, then reads the resulting cluster labels back into Python.
 import os
 import subprocess
 import numpy as np
@@ -42,6 +47,13 @@ def CoOl_dendrogram_clustgeo(
 
     try:
         proc = subprocess.run(cmd, check=True, text=True, capture_output=True)
+    except FileNotFoundError:
+        raise RuntimeError(
+            "Rscript was not found on PATH. The R/ClustGeo clustering backend needs "
+            "R installed with the ClustGeo package (install.packages('ClustGeo') in "
+            "R); use CoolTorch.metrics.sub_groups / CoolTorch.metrics.number_of_subgroups "
+            "instead for the R-free, scipy-Ward alternative."
+        )
     except subprocess.CalledProcessError as e:
         print("R stderr:\n", e.stderr)
         raise

@@ -1,3 +1,8 @@
+# Backend: pure Python/scipy (no R). R equivalent: CoOL_6_number_of_sub_groups (CoOL_functions.R)
+# Scans every k from low_number to high_number, Ward-clustering the risk
+# contributions at each k and recording the mean within-cluster distance, so the
+# elbow of that curve can be read off (or auto-picked via auto_elbow) as the
+# number of sub-groups to use.
 import numpy as np
 from scipy.spatial.distance import pdist
 from scipy.cluster.hierarchy import linkage, fcluster
@@ -31,11 +36,17 @@ def _mean_within_cluster_cityblock(X, labels):
             count += n
             continue
         D = pdist(X[idx], metric="cityblock")
-        total += float(D.mean()) * n
+        # R does mean(as.matrix(dist(...))), i.e. the mean over the full n x n
+        # matrix including the zero diagonal - so divide by n*n, not by the
+        # number of pairs, or we come out (n-1)/n too big
+        total += (2.0 * float(D.sum())) / (n * n) * n
         count += n
     return np.nan if count == 0 else total / count
 
 
+# Automatic elbow selection: picks the k where the mean-distance curve bends the
+# sharpest (max of the second difference), instead of the analyst reading the
+# elbow off the plot by eye.
 def _elbow_k(k_values, mean_dist):
     # sharpest bend of the mean-distance curve (same rule as the R path's _elbow_k)
     k_vals = np.asarray(k_values)

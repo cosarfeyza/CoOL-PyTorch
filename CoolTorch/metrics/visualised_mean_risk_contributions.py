@@ -1,3 +1,7 @@
+# Backend: pure Python/matplotlib (no R). R equivalent: CoOL_9_visualised_mean_risk_contributions (CoOL_functions.R)
+# Draws the mean-risk-contribution heatmap alone (exposures x sub-groups, white
+# -> orange -> red -> black), colour-scaled to the matrix's own max — the colour
+# bar reading those cells against real risk units is visualised_mean_risk_contributions_legend.py.
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt

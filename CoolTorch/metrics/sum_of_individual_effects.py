@@ -1,3 +1,7 @@
+# Backend: pure PyTorch (no R). R equivalent: CoOL_6_sum_of_individual_effects (CoOL_functions.R)
+# Predicts each individual's risk as if the exposures acted independently: sums
+# individual_effects_matrix's per-exposure-alone risks plus baseline, so it can be
+# compared against the model's actual (interaction-aware) predicted risk.
 import numpy as np
 import pandas as pd
 import torch

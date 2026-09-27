@@ -1,3 +1,7 @@
+# Backend: pure Python/pandas (no R). R equivalent: CoOL_8_mean_risk_contributions_by_sub_group (CoOL_functions.R)
+# Averages each exposure's LRP risk contribution within each sub-group and draws
+# the combined text+heatmap table (one row per exposure, one column per sub-group)
+# used as the summary panel in CoOL_default_R.py / CoOL_default_pytorch.py.
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt

@@ -1,3 +1,6 @@
+# Backend: pure Python/scipy (no R). R equivalent: CoOL_6_sub_groups (CoOL_functions.R)
+# Assigns each individual to a sub-group by Ward-clustering the risk-contribution
+# rows (weighted by ipw), then renumbers the clusters low-to-high by mean risk.
 import numpy as np
 from scipy.spatial.distance import pdist
 from scipy.cluster.hierarchy import linkage, fcluster

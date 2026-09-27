@@ -1,3 +1,10 @@
+# Backend: C++ Armadillo (cool_ext_arma, compiled from cool_step_arma.cpp). R equivalent:
+# CoOL_2_train_neural_network (CoOL_functions.R), which itself calls the same kind
+# of compiled routine (Rcpp's cpp_train_network_relu) rather than looping in R —
+# this is the faithful, same-algorithm port, not a reimplementation.
+# Trains by repeatedly calling into the compiled extension for a block of epochs,
+# tracking the best-so-far weights and stopping early once `patience` epochs pass
+# without a new best training MSE.
 import math
 from dataclasses import dataclass
 from typing import List

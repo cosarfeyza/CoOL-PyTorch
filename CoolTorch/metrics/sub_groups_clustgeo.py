@@ -1,7 +1,11 @@
+# Backend: R via subprocess (ClustGeo, through dendo_clustgeo.py). R equivalent: CoOL_6_sub_groups
+# Same job as sub_groups.py (assign each individual to a sub-group, renumber by
+# mean risk) but delegates the actual clustering to R's ClustGeo package so the
+# result matches the original R pipeline exactly rather than a Python re-implementation.
 import os
 import pandas as pd
 import numpy as np
-from CoolTorch.plotting.dendo_clustgeo import CoOl_dendrogram_clustgeo
+from CoolTorch.metrics.dendo_clustgeo import CoOl_dendrogram_clustgeo
 
 
 

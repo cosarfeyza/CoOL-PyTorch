@@ -1,9 +1,12 @@
+# Backend: R via subprocess (ClustGeo, through dendo_clustgeo.py). R equivalent: CoOL_6_number_of_sub_groups
+# Same k-scan/elbow job as number_of_subgroups.py, but each k is clustered by R's
+# ClustGeo package instead of scipy, so it matches the original R pipeline exactly.
 import os
 from scipy.spatial.distance import pdist
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from CoolTorch.plotting.dendo_clustgeo import CoOl_dendrogram_clustgeo
+from CoolTorch.metrics.dendo_clustgeo import CoOl_dendrogram_clustgeo
 
 
 def _mean_as_matrix_dist_cityblock(X):
@@ -14,6 +17,8 @@ def _mean_as_matrix_dist_cityblock(X):
     return (2.0 * d.sum()) / (n * n)
 
 
+# Automatic elbow selection (ClustGeo path): same rule as number_of_subgroups.py's
+# _elbow_k, but reading off the k/mean_dist DataFrame built from R's ClustGeo runs.
 def _elbow_k(df):
     k_vals      = df["k"].values
     dists       = df["mean_dist"].values

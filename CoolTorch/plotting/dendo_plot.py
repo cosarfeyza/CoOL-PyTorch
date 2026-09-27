@@ -4,8 +4,6 @@ import torch
 from scipy.spatial.distance import pdist
 from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
 import matplotlib.pyplot as plt
-import matplotlib
-matplotlib.use("MacOSX")
 
 
 def cool_cluster_and_dendrogram(risk_contributions, n_subgroups=3, ipw=None,
