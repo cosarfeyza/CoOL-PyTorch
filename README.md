@@ -1,6 +1,6 @@
 # CoolTorch — a PyTorch port of Causes of Outcome Learning (CoOL)
 
-A clean, self-contained PyTorch implementation of CoOL (Rieckmann et al. 2022):
+The PyTorch implementation of CoOL (Rieckmann et al. 2022):
 train a non-negative neural network, decompose each individual's risk with
 Layer-wise Relevance Propagation (LRP), and cluster people by their risk-
 contribution profiles into sub-groups.
